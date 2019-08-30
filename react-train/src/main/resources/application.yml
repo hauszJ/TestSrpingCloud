@@ -1,0 +1,38 @@
+#mysql
+spring:
+    datasource:
+        url: jdbc:mysql://localhost:3306/reactDB?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+        username: root
+        password: root
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    liquibase:
+        change-log: classpath:db/master.xml
+        drop-first: false
+        enabled: true
+##mybatis-plus
+#mybatis-plus.mapper-locations=classpath:com/lqy/liquibase/mapper/xml/*.xml
+#mybatis-plus.type-aliases-package=com.lqy.liquibase.entity
+#mybatis-plus.mapper-locations=classpath:com/test/db/iquidbasemybatisplus/iquidbasemybatisplus/mapper/*.*
+mybatis-plus:
+    config-location: classpath:mybatis-config.xml
+#  type-handlers-package
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not_empty
+          #驼峰下划线转换
+      column-underline: true
+          #逻辑删除配置
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+      db-type: mysql
+    refresh: false
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+
+logging:
+    level:
+        com.react.train: debug
+        org.apache.ibatis: debug
+    file: logs\spring.log

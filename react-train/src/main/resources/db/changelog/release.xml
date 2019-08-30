@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql,oracle"/>
+    <property name="amount" value="decimal(20,2)"/>
+
+    <changeSet id="201907181418002" author="qinye.lin">
+        <createTable tableName="sys_user" remarks="用户表">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sys_user"/>
+            </column>
+            <column name="username" type="varchar2(50)" remarks="账号"/>
+            <column name="password" type="varchar2(50)" remarks="密码"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="201908281512001" author="jiehao.ke">
+        <createTable tableName="react_user" remarks="用户表">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_react_user"/>
+            </column>
+            <column name="name" type="varchar2(50)" remarks="名字"/>
+            <column name="phone_number" type="varchar2(50)" remarks="电话"/>
+            <column name="sex" type="int" remarks="性别"/>
+            <column name="email" type="varchar2(50)" remarks="邮箱"/>
+            <column name="job_number" type="varchar2(50)" remarks="工作id"/>
+            <column name="department_id" type="bigint" remarks="部门id"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="201908281512002" author="jiehao.ke">
+        <createTable tableName="react_department" remarks="用户表">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_react_department"/>
+            </column>
+            <column name="name" type="varchar2(50)" remarks="部门名字"/>
+
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
